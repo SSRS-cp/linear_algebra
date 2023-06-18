@@ -1,0 +1,454 @@
+\documentclass{jlreq}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\title{線形代数}
+\author{}
+\setlength{\parindent}{0pt}
+\everymath{\displaystyle}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[subsection]
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{sym}[thm]{記号}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{lem}[thm]{補題}
+\newtheorem{rem}[thm]{注}
+\newtheorem{cor}[thm]{系}
+\newtheorem{ex}[thm]{例}
+\newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Img}{Im}
+\begin{document}
+  \maketitle
+  \tableofcontents
+  \newpage
+  \section{ベクトル空間}
+    \subsection{ベクトル空間}
+      \begin{dfn}
+        $K$ を体とする．集合 $V$ に加法 $V^2 \ni (\bm{x}_1,\bm{x}_2) \mapsto \bm{x}_1+\bm{x}_2 \in V$ とスカラー倍 $K \times V \ni (\lambda,\bm{x}) \mapsto \lambda\bm{x} \in V$ が定義され，以下の性質を満たすとき，$V$ を $K$ 上のベクトル空間 (あるいはベクトル空間) という．また，このとき $V$ の元をベクトルという．
+        \begin{enumerate}
+          \item $\bm{x_1}+\bm{x_2}=\bm{x_2}+\bm{x_1}$．
+          \item $(\bm{x_1}+\bm{x_2})+\bm{x_3}=\bm{x_1}+(\bm{x_2}+\bm{x_3})$．
+          \item ある $V$ の元 $\bm{0}$ が存在し，$\bm{x}+\bm{0}=\bm{0}+\bm{x}=\bm{x}$．$\bm{0}$ を零ベクトルという．
+          \item 各 $\bm{x} \in V$ に対し，$\bm{x}' \in V$ が存在し，$\bm{x}+\bm{x}'=\bm{x}'+\bm{x}=\bm{0}$．この $\bm{x}'$ を $\bm{x}'$ の逆ベクトルという．
+          \item $(\lambda_1+\lambda_2)\bm{x}=\lambda_1\bm{x}+\lambda_2\bm{x}$．
+          \item $\lambda(\bm{x}_1+\bm{x}_2)=\lambda\bm{x}_1+\lambda\bm{x}_2$．
+          \item $(\lambda_1\lambda_2)\bm{x}=\lambda_1(\lambda_2\bm{x})$．
+          \item $1\bm{x}=\bm{x}$．
+        \end{enumerate}
+      \end{dfn}
+      \begin{sym}
+        $\bm{x} \in V$ の逆ベクトル $\bm{x}'$ を $-\bm{x}$ とも書く．また，$\bm{x}_1,\bm{x}_2 \in V$ に対し $\bm{x}_1+(-\bm{x}_2)$ を $\bm{x}_1-\bm{x}_2$ とも書く．
+      \end{sym}
+      \begin{comment}
+      \end{comment}
+      \begin{prop}
+        $V$: ベクトル空間．
+        \begin{enumerate}
+          \item 零ベクトル $\bm{0}$ はただ $1$ つ存在する．
+          \item $\bm{x} \in V$ に対し，$\bm{x}$ の逆ベクトルはただ $1$ つ存在する．
+          \item $0\bm{x}=\bm{0}$．
+          \item $\lambda\bm{0}=\bm{0}$．
+          \item $(-1)\bm{x}=-\bm{x}$．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $\bm{0}_1, \bm{0}_2 \in V$ を $V$ の零ベクトルとすると，$\bm{0}_1 = \bm{0}_1+\bm{0}_2 = \bm{0}_2$．
+          \item $\bm{x}'_1, \bm{x}'_2 \in V$ を $\bm{x} \in V$ の逆ベクトルとすると，$\bm{x}'_1 = \bm{x}'_1+\bm{0} = \bm{x}'_1+(\bm{x}+\bm{x}'_2) = (\bm{x}'_1+\bm{x})+\bm{x}'_2 = \bm{0}+\bm{x}'_2 = \bm{x}'_2$．
+          \item $0\bm{x} = 0\bm{x}+\bm{0} = 0\bm{x}+(0\bm{x}-0\bm{x})=(0\bm{x}+0\bm{x})-0\bm{x}=(0+0)\bm{x}-0\bm{x}=0\bm{x}-0\bm{x}=\bm{0}$．
+          \item $\lambda\bm{0}=\lambda\bm{0}+\bm{0}=\lambda\bm{0}+(\lambda\bm{0}-\lambda\bm{0})=(\lambda\bm{0}+\lambda\bm{0})-\lambda\bm{0}=\lambda(\bm{0}+\bm{0})-\lambda\bm{0}=\lambda\bm{0}-\lambda\bm{0}=\bm{0}$．
+          \item $\bm{x}+(-1)\bm{x}=1\bm{x}+(-1)\bm{x}=(1+(-1))\bm{x}=0\bm{x}=\bm{0}, (-1)\bm{x}+\bm{x}=(-1+1)\bm{x}=0\bm{x}=\bm{0}$ より，$(-1)\bm{x}$ は $\bm{x}$ の逆ベクトルである．
+        \end{enumerate}
+      \end{proof}
+      \begin{prop}
+        $V$: ベクトル空間． 
+        \begin{enumerate}
+          \item $-\bm{0}=\bm{0}$．
+          \item $-(-\bm{x})=\bm{x}$．
+          \item $-(\bm{x}_1+\bm{x}_2)=-\bm{x}_1-\bm{x}_2$．
+          \item $-(\lambda\bm{x})=(-\lambda)\bm{x}$．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $-\bm{0}=(-1)\bm{0}=\bm{0}$．
+          \item $-(-\bm{x})=-((-1)\bm{x})=(-1)((-1)\bm{x})=((-1)(-1))\bm{x}=1\bm{x}=\bm{x}$．
+          \item $-(\bm{x}_1+\bm{x}_2)=(-1)(\bm{x}_1+\bm{x}_2)=(-1)\bm{x}_1+(-1)\bm{x}_2=-\bm{x}_1-\bm{x}_2$．
+          \item $-(\lambda\bm{x})=(-1)(\lambda\bm{x})=((-1)\lambda)\bm{x}=(-\lambda)\bm{x}$．
+        \end{enumerate}
+      \end{proof}
+      \begin{dfn}
+        $V$: ベクトル空間．
+        $W \subseteq V$ が $V$ と同じ和とスカラー倍によりベクトル空間となるとき，$W$ は $V$ の部分空間であるという．
+      \end{dfn}
+      \begin{prop}
+        $V$: ベクトル空間．
+        \begin{enumerate}
+          \item $\{\bm{0}\} \subseteq V$ は $V$ の部分空間である．
+          \item $V \subseteq V$ は $V$ の部分空間である．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        自明．
+      \end{proof}
+      \begin{lem}\label{zero-vector-and-inverse-are-in-subspace}
+        $V$: ベクトル空間，$W \subset V$: 部分空間．
+        \begin{enumerate}
+          \item $V$ の零ベクトルを $\bm{0}$ とおくと，$\bm{0} \in W$ である．また，$\bm{0}$ は $W$ の零ベクトルである．
+          \item $\bm{x} \in W$ について，$V$ における $\bm{x}$ の逆ベクトルを $\bm{x}'$ とおくと，$\bm{x}' \in W$ である．また，$\bm{x}'$ は $W$ における $\bm{x}$ の逆ベクトルである．
+        \end{enumerate}
+      \end{lem}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $W \neq \emptyset$ なので，$\bm{x} \in W$ を取ると $\bm{x}-\bm{x}=\bm{0}$．一方，$\bm{x}-\bm{x} \in W$ なので $\bm{0} \in W$．また，$\forall \bm{x} \in W$ に対し $\bm{x}+\bm{0}=\bm{0}+\bm{x}=\bm{x}$ なので $\bm{0}$ は $W$ の零ベクトルである．
+          \item $W$ における $\bm{x}$ の逆ベクトルを $\bm{x}''$ とおくと，$\bm{0}$ は $W$ の零ベクトルなので，$\bm{x}+\bm{x}''=\bm{x}''+\bm{x}=\bm{0}$ であるから $\bm{x}''$ は $\bm{x}'$ に等しい．
+        \end{enumerate}
+      \end{proof}
+      \begin{prop}
+        $V$: $K$ 上のベクトル空間，$W \subseteq V$．以下は同値．
+        \begin{enumerate}
+          \item $W$ は $V$ の部分空間である．
+          \item 以下の (a), (b), (c) が成り立つ．
+            \begin{enumerate}
+              \item $W \neq \emptyset$．
+              \item $\forall \bm{x}_1,\bm{x}_2 \in W: \bm{x}_1+\bm{x}_2 \in W$．
+              \item $\forall \lambda \in K, \bm{x} \in W: \lambda\bm{x} \in W$．
+            \end{enumerate}
+          \item 以下の (a), (b) が成り立つ．
+            \begin{enumerate}
+              \item $W \neq \emptyset$．
+              \item $\forall \lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in W: \lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in W$．
+            \end{enumerate}
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{description}
+          \item [$(1. \implies 3.) \, $] 自明．
+          \item [$(3. \implies 2.) \, $] \mbox{}\begin{enumerate}[label=\text{(\alph*) }] 
+              \item 自明．
+              \item $\bm{x}_1+\bm{x}_2=1\bm{x}_1+1\bm{x}_2 \in W$．
+              \item $\lambda \bm{x} = \lambda\bm{x}+0\bm{x} \in W$．
+          \end{enumerate}
+          \item [$(2. \implies 1.) \, $]
+            \mbox{}
+            
+            $W$ は加法とスカラー倍について閉じているので，定義域を $W$ に制限することにより $W$ に $V$ と同じ加法 $W \ni (\bm{x}_1,\bm{x}_2) \mapsto \bm{x}_1,\bm{x}_2 \in W$ とスカラー倍 $K \times V \ni (\lambda,\bm{x}) \mapsto \lambda\bm{x} \in V$ が定義できる．補題 \ref{zero-vector-and-inverse-are-in-subspace} より，$W$ はベクトル空間となる．
+        \end{description}
+      \end{proof}
+      \begin{prop}
+        $V$: $K$ 上のベクトル空間，$W_1, W_2, \dots, W_n \subseteq V$: $V$ の部分空間．このとき，$\bigcap_{i=1}^n W_i := W_1 \cap W_2 \cap \dots \cap W_n \subseteq V$ は $V$ の部分空間．
+      \end{prop}
+      \begin{proof}
+        $\bm{0} \in W_i \, (i \in \{1,2,\dots,n\})$ より，$\bm{0} \in \bigcap_{i=1}^n W_i$ なので $\bigcap_{i=1}^n W_i \neq \emptyset$．
+
+        $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in \bigcap_{i=1}^n W_i$ とおく．$i \in \{1,2,\dots,n\}$ に対し，$\bm{x}_1,\bm{x}_2 \in W_i$ より $\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in W_i$ であるから，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in \bigcap_{i=1}^n W_i$．
+      \end{proof}
+      \begin{prop}
+        $V$: ベクトル空間，$W_1, W_2, \dots, W_n \subseteq V$: $V$ の部分空間．このとき，$\sum_{i=1}^n = W_1 + W_2 + \dots + W_n := \left\{\sum_{i=1}^n\bm{x}_i \relmiddle| \bm{x}_i \in W_i\right\} \subseteq V$ は $V$ の部分空間．
+      \end{prop}
+      \begin{proof}
+        $\bm{0} \in W_i \, (i \in \{1,2,\dots,n\})$ より，$\sum_{i=1}^n\bm{0} \in \sum_{i=1}^n W_i$ なので $\sum_{i=1}^n W_i \neq \emptyset$．
+
+        $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in \sum_{i=1}^n W_i$ とおくと，$\exists \bm{x}_{i,j} \in W_j s.t. \bm{x}_i=\sum_{j=1}^n\bm{x}_{i,j} \, (i \in \{1,2\}, j \in \{1,2,\dots,n\})$．このとき，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2=\sum_{j=1}^n(\lambda_1\bm{x}_{1,j}+\lambda_2\bm{x}_{2,j})$ であり，$\lambda_1\bm{x}_{1,j}+\lambda_2\bm{x}_{2,j} \in W_j$ なので $\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in \sum_{i=1}^n W_i$．
+      \end{proof}
+    \subsection{線形写像}
+      \begin{dfn}
+        $V_1$, $V_2$: $K$ 上のベクトル空間．写像 $T \colon V_1 \to V_2$ が以下の条件を満たすとき，$T$ は線形写像であるという．
+        \begin{enumerate}
+          \item $T(\bm{x}_1+\bm{x}_2)=T(\bm{x}_1)+T(\bm{x}_2) \, (\bm{x}_1,\bm{x}_2 \in V_1)$．
+          \item $T(\lambda\bm{x})=\lambda T(\bm{x}) \, (\lambda \in K, \bm{x} \in V_1)$．
+        \end{enumerate}
+      \end{dfn}
+      \begin{sym}
+        線形写像 $V_1 \to V_2$ 全体の集合を $\mathcal{L}(V_1,V_2)$ と書く．また，$\mathcal{L}(V,V)$ を $\mathcal{L}(V)$ と書く．
+      \end{sym}
+      \begin{prop}
+        $V_1, V_2$: $K$ 上のベクトル空間．写像 $T \colon V_1 \to V_2$ について以下は同値．
+        \begin{enumerate}
+          \item $T \in \mathcal{L}(V_1,V_2)$．
+          \item $\forall \lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ について，$T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)=\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2)$．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{description}
+          \item [$(1. \implies 2.) \, $]
+            \mbox{}
+            
+            $T \in \mathcal{L}(V_1,V_2)$ とすると，$\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，$T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)=T(\lambda_1\bm{x}_1)+T(\lambda_2\bm{x}_2)=\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2)$．
+          \item [$(2. \implies 1.) \, $]
+            \mbox{}
+            
+            $\bm{x}_1,\bm{x}_2 \in V_1$ に対し，$T(\bm{x}_1+\bm{x}_2)=T(1\bm{x}_1+1\bm{x}_2)=1T(\bm{x}_1)+1T(\bm{x}_2)=T(\bm{x}_1)+T(\bm{x}_2)$．また，$\lambda \in K, \bm{x} \in V_1$ に対し，$T(\lambda \bm{x}) = T(\lambda \bm{x} + 0\bm{x}) = \lambda T(\bm{x}) + 0T(\bm{x}) = \lambda T(\bm{x})$．よって $T\in\mathcal{L}(V_1,V_2)$．
+        \end{description}
+      \end{proof}
+      \begin{prop}
+        $V_1, V_2$: ベクトル空間，$T \in \mathcal{L}(V_1, V_2)$．このとき，$T(\bm{0})=\bm{0}$．
+      \end{prop}
+      \begin{proof}
+        $T(\bm{0})=T(0\bm{0})=0T(\bm{0})=\bm{0}$．
+      \end{proof}
+      \begin{ex}
+        $V$: $K$ 上のベクトル空間．写像 $V \ni \bm{x} \mapsto \bm{x} \in V$ は線形写像である．この写像を $V$ における恒等写像といい，$1_V$ と表す．
+      \end{ex}
+      \begin{proof}
+        $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V$ に対し，$1_V(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)=\lambda_1\bm{x}_1+\lambda_2\bm{x}_2=\lambda_11_V(\bm{x}_1)+\lambda_21_V(\bm{x}_2)$．
+      \end{proof}
+      \begin{ex}
+        $V_1,V_2$: $K$ 上のベクトル空間．
+        \begin{enumerate}
+          \item 写像 $V_1 \ni \bm{x} \mapsto \bm{0} \in V_2$ は線形写像である．この写像を $0$ 写像といい，$0 \in \mathcal{L}(V_1,V_2)$ と表す．
+          \item $T \in \mathcal{L}(V_1,V_2)$ に対し，写像 $V_1 \ni \bm{x} \mapsto -T(\bm{x}) \in V_2$ は線形写像である．この写像を $-T \in \mathcal{L}(V_1,V_2)$ と表す．
+        \end{enumerate}
+      \end{ex}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，$0(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)=\bm{0}=\lambda_1\bm{0}+\lambda_2\bm{0}=\lambda_10(\bm{x}_1)+\lambda_20(\bm{x}_2)$．
+          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，
+            \begin{align*}
+              (-T)(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) &= -(T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)) \\
+              &= -(\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2)) \\
+              &= -\lambda_1T(\bm{x}_1)-\lambda_2T(\bm{x}_2) \\
+              &= \lambda_1(-T(\bm{x}_1))+\lambda_2(-T(\bm{x}_2)) \\
+              &= \lambda_1(-T)(\bm{x}_1)+\lambda_2(-T)(\bm{x}_2)．
+            \end{align*}
+        \end{enumerate}
+      \end{proof}
+      \begin{dfn}\label{linear-map-addition-and-scalar-multiplication}
+        $V_1, V_2$: $K$ 上のベクトル空間．
+        \begin{enumerate}
+          \item $T_1,T_2\in\mathcal{L}(V_1,V_2)$ に対し，写像 $T_1+T_2 \colon V_1 \to V_2$ を $T_1+T_2 \colon V_1 \ni \bm{x} \mapsto T_1(\bm{x})+T_2(\bm{x}) \in V_2$ と定める．
+          \item $T \in \mathcal{L}(V_1,V_2), \lambda \in K$ に対し，写像 $\lambda T \colon V_1 \to V_2$ を $\lambda T \colon V_1 \ni \bm{x} \mapsto \lambda(T(x)) \in V_2$ と定める．
+        \end{enumerate}
+      \end{dfn}
+      \begin{prop}
+        $V_1, V_2$: $K$ 上のベクトル空間．
+        \begin{enumerate}
+          \item $T_1,T_2 \in \mathcal{L}(V_1,V_2)$ のとき，$T_1+T_2 \in \mathcal{L}(V_1,V_2)$．
+          \item $T\in\mathcal{L}(V_1,V_2), \lambda\in K$ のとき，$\lambda T \in \mathcal{L}(V_1,V_2)$．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，
+            \begin{align*}
+              (T_1+T_2)(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) &= T_1(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)+T_2(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) \\
+              &= \lambda_1T_1(\bm{x}_1)+\lambda_2T_1(\bm{x}_2)+\lambda_1T_2(\bm{x}_1)+\lambda_2T_2(\bm{x}_2) \\
+              &= \lambda_1T_1(\bm{x}_1)+\lambda_1T_2(\bm{x}_1)+\lambda_2T_1(\bm{x}_2)+\lambda_2T_2(\bm{x}_2) \\
+              &= \lambda_1(T_1(\bm{x}_1)+T_2(\bm{x}_1))+\lambda_2(T_1(\bm{x}_2)+T_2(\bm{x}_2)) \\
+              &= \lambda_1(T_1+T_2)(\bm{x}_1)+\lambda_2(T_1+T_2)(\bm{x}_2)．
+            \end{align*}
+          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，
+            \begin{align*}
+              (\lambda T)(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) &= \lambda(T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)) \\
+              &= \lambda(\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2)) \\
+              &= \lambda(\lambda_1T(\bm{x}_1))+\lambda(\lambda_2T(\bm{x}_2)) \\
+              &= (\lambda\lambda_1)T(\bm{x}_1)+(\lambda\lambda_2)T(\bm{x}_2) \\
+              &= (\lambda_1\lambda)T(\bm{x}_1)+(\lambda_2\lambda)T(\bm{x}_2) \\
+              &= \lambda_1(\lambda T(\bm{x}_1))+\lambda_2(\lambda T(\bm{x}_2)) \\
+              &= \lambda_1(\lambda T)(\bm{x}_1)+\lambda_2(\lambda T)(\bm{x}_2)．
+            \end{align*}
+        \end{enumerate}
+      \end{proof}
+      \begin{prop}
+        $V_1,V_2$: $K$ 上のベクトル空間．このとき，$\mathcal{L}(V_1,V_2)$ は定義
+         \ref{linear-map-addition-and-scalar-multiplication} で定めた加法とスカラー倍について $K$ 上のベクトル空間となる．
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $T_1,T_2 \in \mathcal{L}(V_1,V_2)$ とおくと，$\bm{x} \in V_1$ に対し，
+            \begin{align*}
+              (T_1+T_2)(x) &= T_1(x)+T_2(x) \\
+              &= T_2(x)+T_1(x) \\
+              &= (T_2+T_1)(x)
+            \end{align*}
+            より，$T_1+T_2=T_2+T_1$．
+          \item $T_1,T_2,T_3 \in \mathcal{L}(V_1,V_2)$ とおくと，$\bm{x} \in V_1$ に対し，
+            \begin{align*}
+              ((T_1+T_2)+T_3)(x) &= (T_1+T_2)(x)+T_3(x) \\
+              &= (T_1(x)+T_2(x))+T_3(x) \\
+              &= T_1(x)+(T_2(x)+T_3(x)) \\
+              &= T_1(x)+(T_2+T_3)(x) \\
+              &= (T_1+(T_2+T_3))(x)
+            \end{align*}
+            より，$(T_1+T_2)+T_3=T_1+(T_2+T_3)$．
+          \item $T \in \mathcal{L}(V_1,V_2), \bm{x} \in V_1$ に対し，
+            \begin{align*}
+              (0+T)(\bm{x}) &= 0(\bm{x})+T(\bm{x}) \\
+              &= \bm{0}+T(\bm{x}) \\
+              &= T(\bm{x})，\\
+              (T+0)(\bm{x}) &= T(\bm{x})+0(\bm{x}) \\
+              &= T(\bm{x})+\bm{0} \\
+              &= T(\bm{x})
+            \end{align*}
+            より，$0+T=T+0=T$ である．
+          \item $T \in \mathcal{L}(V_1,V_2), \bm{x} \in V_1$ に対し，
+            \begin{align*}
+              (T+(-T))(\bm{x}) &= T(\bm{x})+(-T)(\bm{x}) \\
+              &= T(\bm{x})-T(\bm{x}) \\
+              &= \bm{0} \\
+              &= 0(\bm{x})，\\
+              (-T+T)(\bm{x}) &= (-T)(\bm{x})+T(\bm{x}) \\
+              &= -T(\bm{x})+T(\bm{x}) \\
+              &= \bm{0} \\
+              &= 0(\bm{x})
+            \end{align*}
+            より，$T+(-T)=(-T)+T=0$ である．
+          \item $\lambda_1,\lambda_2 \in K, T \in \mathcal{L}(V_1,V_2)$ とおくと，$\bm{x} \in V_1$ に対し，
+            \begin{align*}
+              ((\lambda_1+\lambda_2)T)(\bm{x}) &= (\lambda_1+\lambda_2)(T(\bm{x})) \\
+              &= \lambda_1(T(\bm{x}))+\lambda_2(T(\bm{x})) \\
+              &= (\lambda_1T)(\bm{x})+(\lambda_2T)(\bm{x}) \\
+              &= (\lambda_1T+\lambda_2T)(\bm{x})
+            \end{align*}
+            より，$(\lambda_1+\lambda_2)T=\lambda_1T+\lambda_2T$．
+          \item $\lambda \in K, T_1,T_2 \in \mathcal{L}(V_1,V_2)$ とおくと，$\bm{x} \in V_1$ に対し，
+            \begin{align*}
+              (\lambda(T_1+T_2))(\bm{x}) &= \lambda((T_1+T_2)(\bm{x})) \\
+              &= \lambda(T_1(\bm{x})+T_2(\bm{x})) \\
+              &= \lambda T_1(\bm{x})+\lambda T_2(\bm{x}) \\
+              &= (\lambda T_1)(\bm{x})+(\lambda T_2)(\bm{x}) \\
+              &= (\lambda T_1 + \lambda T_2)(\bm{x})
+            \end{align*}
+            より，$\lambda(T_1+T_2)=\lambda T_1 + \lambda T_2$．
+          \item $\lambda_1,\lambda_2 \in K, T \in \mathcal{L}(V_1,V_2)$ とおくと，$\bm{x} \in V_1$ に対し，
+            \begin{align*}
+              ((\lambda_1\lambda_2)T)(\bm{x}) &= (\lambda_1\lambda_2)(T(\bm{x})) \\
+              &= \lambda_1(\lambda_2(T(\bm{x}))) \\
+              &= \lambda_1((\lambda_2 T)(\bm{x})) \\
+              &= (\lambda_1(\lambda_2 T))(\bm{x})
+            \end{align*}
+            より，$(\lambda_1\lambda_2)T=\lambda_1(\lambda_2 T)$．
+          \item $T \in \mathcal{L}(V_1,V_2), \bm{x} \in V_1$ に対し，
+            \begin{align*}
+              (1T)(\bm{x}) &= 1(T(\bm{x})) \\
+              &= T(\bm{x})
+            \end{align*}
+            より，$1T=T$．
+        \end{enumerate}
+      \end{proof}
+      \begin{prop}\label{composition-of-linear-map-is-linear-map}
+        $V_1,V_2,V_3$: $K$ 上のベクトル空間，$T_1 \in \mathcal{L}(V_1,V_2)$，$T_2 \in \mathcal{L}(V_2,V_3)$．このとき，$T_2 \circ T_1 \in \mathcal{L}(V_1,V_3)$．
+      \end{prop}
+      \begin{proof}
+        $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，
+        \begin{align*}
+          (T_2 \circ T_1)(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) &= T_2(T_1(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)) \\
+          &= T_2(\lambda_1T_1(\bm{x}_1)+\lambda_2T_1(\bm{x}_2)) \\
+          &= \lambda_1T_2(T_1(\bm{x}_1))+\lambda_2T_2(T_1(\bm{x}_2)) \\
+          &= \lambda_1(T_2 \circ T_1)(\bm{x}_1)+\lambda_2(T_2 \circ T_1)(\bm{x}_2)．
+        \end{align*}
+      \end{proof}
+      \begin{sym}
+        命題 \ref{composition-of-linear-map-is-linear-map} における $T_2 \circ T_1$ を $T_2T_1$ と書く． 
+      \end{sym}
+      \begin{prop}
+        以下が成り立つ．
+        \begin{enumerate}
+          \item $V_1,V_2,V_3$: ベクトル空間，$f \in \mathcal{L}(V_1,V_2)$，$0 \in \mathcal{L}(V_2,V_3)$: $0$ 写像．このとき，$0f=0 \in \mathcal{L}(V_1,V_3)$．
+          \item $V_1,V_2,V_3$: ベクトル空間，$0 \in \mathcal{L}(V_1,V_2)$: $0$ 写像，$f \in \mathcal{L}(V_2,V_3)$．このとき，$f0=0 \in \mathcal{L}(V_1,V_3)$．
+          \item $V_1,V_2$: ベクトル空間，$f \in \mathcal{L}(V_1,V_2)$．このとき，$1_{V_2}f=f1_{V_1}=f$．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $\bm{x} \in V_1$ に対し，$(0f)(\bm{x})=0(f(\bm{x}))=\bm{0}=0(\bm{x})$．
+          \item $\bm{x} \in V_1$ に対し，$(f0)(\bm{x})=f(0(\bm{x}))=f(\bm{0})=\bm{0}=0(\bm{x})$．
+          \item $\bm{x} \in V_1$ に対し，$(1_{V_2}f)(\bm{x})=1_{V_2}(f(\bm{x}))=f(\bm{x})$，$(f1_{V_1})(\bm{x})=f(1_{V_1}(\bm{x}))=f(\bm{x})$．
+        \end{enumerate}
+      \end{proof}
+      \begin{prop}
+        以下が成り立つ．
+        \begin{enumerate}
+          \item $V_1,V_2,V_3$: $K$ 上のベクトル空間，$f \in \mathcal{L}(V_1,V_2)$，$g \in \mathcal{L}(V_2,V_3)$，$\lambda \in K$．このとき，$g(kf)=(kg)f=k(gf)$．
+          \item $V_1,V_2,V_3$: ベクトル空間，$f \in \mathcal{L}(V_1,V_2)$，$g_1, g_2 \in \mathcal{L}(V_2,V_3)$．このとき，$(g_1+g_2)f=g_1f+g_2f$．
+          \item $V_1,V_2,V_3$: ベクトル空間，$f_1,f_2 \in \mathcal{L}(V_1,V_2)$，$g \in \mathcal{L}(V_2,V_3)$．このとき，$g(f_1+f_2)=gf_1+gf_2$．
+          \item $V_1,V_2,V_3,V_4$: ベクトル空間，$f_1 \in \mathcal{L}(V_1,V_2), f_2 \in \mathcal{L}(V_2,V_3), f_3 \in \mathcal{L}(V_3,V_4)$．このとき，$(f_3f_2)f_1=f_3(f_2f_1)$．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $\bm{x} \in V_1$ に対し，
+            \begin{align*}
+              (g(kf))(\bm{x}) &= g((kf)(\bm{x}) \\
+              &= g(k(f(\bm{x}))) \\
+              &= k(g(f(\bm{x}))) \\
+              &= k((gf)(\bm{x}))，\\
+              (kg)(f)(\bm{x}) &= (kg)(f(\bm{x})) \\
+              &= k(g(f(\bm{x}))) \\
+              &= k((gf)(\bm{x}))
+            \end{align*}
+            よって $g(kf)=(kg)f=k(gf)$．
+          \item $\bm{x} \in V_1$ に対し，
+            \begin{align*}
+              ((g_1+g_2)f)(\bm{x}) &= (g_1+g_2)(f(\bm{x})) \\
+              &= g_1(f(\bm{x}))+g_2(f(\bm{x})) \\
+              &= (g_1f)(\bm{x})+(g_2f)(\bm{x}) \\
+              &= (g_1f+g_2f)(\bm{x})
+            \end{align*}
+            よって $(g_1+g_2)f=g_1f+g_2f$．
+          \item $\bm{x} \in V_1$ に対し，
+            \begin{align*}
+              (g(f_1+f_2))(\bm{x}) &= g((f_1+f_2)(\bm{x})) \\
+              &= g(f_1(\bm{x})+f_2(\bm{x})) \\
+              &= g(f_1(\bm{x}))+g(f_2(\bm{x})) \\
+              &= (gf_1)(\bm{x})+(gf_2)(\bm{x}) \\
+              &= (gf_1+gf_2)(\bm{x})
+            \end{align*}
+            よって $g(f_1+f_2)=gf_1+gf_2$．
+          \item $\bm{x} \in V_1$ に対し，
+            \begin{align*}
+               ((f_3f_2)f_1)(\bm{x}) &= (f_3f_2)(f_1(x)) \\
+               &= f_3(f_2(f_1(\bm{x}))) \\
+               &= f_3((f_2f_1)(\bm{x}) \\
+               &= (f_3(f_2f_1))(\bm{x})
+            \end{align*}
+            よって $(f_3f_2)f_1=f_3(f_2f_1)$．
+        \end{enumerate}
+      \end{proof}
+      \begin{prop}\label{image-and-preimage-of-subspace-is-subspace}
+        $V_1, V_2$: $K$ 上のベクトル空間，$T \in \mathcal{L}(V_1,V_2)$．このとき，以下が成り立つ．
+        \begin{enumerate}
+          \item $W \subseteq V_1$: 部分空間に対し，$T(W)=\{T(\bm{x}) \mid \bm{x} \in W\} \subseteq V_2$ は $V_2$ の部分空間．
+          \item $W \subseteq V_2$: 部分空間に対し，$T^{-1}(W)=\{\bm{x} \in V_1 \mid T(\bm{x}) \in W\} \subseteq V_1$ は $V_1$ の部分空間．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $\lambda_1,\lambda_2 \in K, \bm{y}_1,\bm{y}_2 \in T(W)$ とおくと，$\exists \bm{x}_1,\bm{x}_2 \in W: T(\bm{x}_1)=\bm{y}_1,T(\bm{x}_2)=\bm{y}_2$．このとき，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in W$ より $\lambda_1\bm{y}_1+\lambda_2\bm{x}_2=\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2)=T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) \in T(W)$．
+          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in T^{-1}(W)$ とおくと，$T(\bm{x}_1),T(\bm{x}_2) \in W$ より $T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)=\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2) \in W$ であるから，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in W$．
+        \end{enumerate}
+      \end{proof}　　
+      \begin{dfn}
+        $V_1, V_2$: ベクトル空間，$T \in \mathcal{L}(V_1,V_2)$．
+        \begin{enumerate}
+          \item $\Ker T := \{\bm{x} \in V_1 \mid T(\bm{x})=\bm{0}\} = T^{-1}(\{\bm{0}\})$ を $T$ の核という．
+          \item $\Img T := \{T(\bm{x}) \mid \bm{x} \in V_1\} = T(V_1)$ を $T$ の像という．
+        \end{enumerate}
+      \end{dfn}
+      \begin{cor}
+        $V_1,V_2$: ベクトル空間，$T \in \mathcal{L}(V_1,V_2)$．
+        \begin{enumerate}
+          \item $\Ker T \subseteq V_1$ は $V_1$ の部分空間．
+          \item $\Img T \subseteq V_2$ は $V_2$ の部分空間．
+        \end{enumerate}
+      \end{cor}
+      \begin{proof}
+        命題 \ref{image-and-preimage-of-subspace-is-subspace} から従う．
+      \end{proof}
+\end{document}
