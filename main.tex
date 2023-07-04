@@ -21,6 +21,7 @@
 \newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\Span}{span}
 \begin{document}
   \maketitle
   \tableofcontents
@@ -28,12 +29,12 @@
   \section{ベクトル空間}
     \subsection{ベクトル空間}
       \begin{dfn}
-        $K$ を体とする．集合 $V$ に加法 $V^2 \ni (\bm{x}_1,\bm{x}_2) \mapsto \bm{x}_1+\bm{x}_2 \in V$ とスカラー倍 $K \times V \ni (\lambda,\bm{x}) \mapsto \lambda\bm{x} \in V$ が定義され，以下の性質を満たすとき，$V$ を $K$ 上のベクトル空間 (あるいはベクトル空間) という．また，このとき $V$ の元をベクトルという．
+        $K$ を体とする．集合 $V$ に加法 $V^2 \ni (\bm{x}_1,\bm{x}_2) \mapsto \bm{x}_1+\bm{x}_2 \in V$ とスカラー倍 $K \times V \ni (\lambda,\bm{x}) \mapsto \lambda\bm{x} \in V$ が定義され，以下の性質を満たすとき，$V$ を \textbf{$K$ 上のベクトル空間} (あるいはベクトル空間) という．また，このとき $V$ の元を\textbf{ベクトル}という．
         \begin{enumerate}
           \item $\bm{x_1}+\bm{x_2}=\bm{x_2}+\bm{x_1}$．
           \item $(\bm{x_1}+\bm{x_2})+\bm{x_3}=\bm{x_1}+(\bm{x_2}+\bm{x_3})$．
-          \item ある $V$ の元 $\bm{0}$ が存在し，$\bm{x}+\bm{0}=\bm{0}+\bm{x}=\bm{x}$．$\bm{0}$ を零ベクトルという．
-          \item 各 $\bm{x} \in V$ に対し，$\bm{x}' \in V$ が存在し，$\bm{x}+\bm{x}'=\bm{x}'+\bm{x}=\bm{0}$．この $\bm{x}'$ を $\bm{x}'$ の逆ベクトルという．
+          \item ある $V$ の元 $\bm{0}$ が存在し，$\bm{x}+\bm{0}=\bm{0}+\bm{x}=\bm{x}$．$\bm{0}$ を\textbf{零ベクトル}という．
+          \item 各 $\bm{x} \in V$ に対し，$\bm{x}' \in V$ が存在し，$\bm{x}+\bm{x}'=\bm{x}'+\bm{x}=\bm{0}$．この $\bm{x}'$ を $\bm{x}$ の\textbf{逆ベクトル}という．
           \item $(\lambda_1+\lambda_2)\bm{x}=\lambda_1\bm{x}+\lambda_2\bm{x}$．
           \item $\lambda(\bm{x}_1+\bm{x}_2)=\lambda\bm{x}_1+\lambda\bm{x}_2$．
           \item $(\lambda_1\lambda_2)\bm{x}=\lambda_1(\lambda_2\bm{x})$．
@@ -85,7 +86,7 @@
       \end{proof}
       \begin{dfn}
         $V$: ベクトル空間．
-        $W \subseteq V$ が $V$ と同じ和とスカラー倍によりベクトル空間となるとき，$W$ は $V$ の部分空間であるという．
+        $W \subseteq V$ が $V$ と同じ和とスカラー倍によりベクトル空間となるとき，$W$ は $V$ の\textbf{部分空間}であるという．
       \end{dfn}
       \begin{prop}
         $V$: ベクトル空間．
@@ -141,11 +142,11 @@
           \item [$(2. \implies 1.) \, $]
             \mbox{}
             
-            $W$ は加法とスカラー倍について閉じているので，定義域を $W$ に制限することにより $W$ に $V$ と同じ加法 $W \ni (\bm{x}_1,\bm{x}_2) \mapsto \bm{x}_1,\bm{x}_2 \in W$ とスカラー倍 $K \times V \ni (\lambda,\bm{x}) \mapsto \lambda\bm{x} \in V$ が定義できる．補題 \ref{zero-vector-and-inverse-are-in-subspace} より，$W$ はベクトル空間となる．
+            $W$ は加法とスカラー倍について閉じているので，定義域を $W$ に制限することにより $W$ に $V$ と同じ加法 $W \ni (\bm{x}_1,\bm{x}_2) \mapsto \bm{x}_1,\bm{x}_2 \in W$ とスカラー倍 $K \times W \ni (\lambda,\bm{x}) \mapsto \lambda\bm{x} \in W$ が定義できる．補題 \ref{zero-vector-and-inverse-are-in-subspace} より，$W$ はベクトル空間となる．
         \end{description}
       \end{proof}
       \begin{prop}
-        $V$: $K$ 上のベクトル空間，$W_1, W_2, \dots, W_n \subseteq V$: $V$ の部分空間．このとき，$\bigcap_{i=1}^n W_i := W_1 \cap W_2 \cap \dots \cap W_n \subseteq V$ は $V$ の部分空間．
+        $V$: $K$ 上のベクトル空間，$W_1, W_2, \dots, W_n \subseteq V$: $V$ の部分空間．このとき，$$\bigcap_{i=1}^n W_i := W_1 \cap W_2 \cap \dots \cap W_n \subseteq V$$ は $V$ の部分空間．
       \end{prop}
       \begin{proof}
         $\bm{0} \in W_i \, (i \in \{1,2,\dots,n\})$ より，$\bm{0} \in \bigcap_{i=1}^n W_i$ なので $\bigcap_{i=1}^n W_i \neq \emptyset$．
@@ -153,16 +154,36 @@
         $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in \bigcap_{i=1}^n W_i$ とおく．$i \in \{1,2,\dots,n\}$ に対し，$\bm{x}_1,\bm{x}_2 \in W_i$ より $\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in W_i$ であるから，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in \bigcap_{i=1}^n W_i$．
       \end{proof}
       \begin{prop}
-        $V$: ベクトル空間，$W_1, W_2, \dots, W_n \subseteq V$: $V$ の部分空間．このとき，$\sum_{i=1}^n = W_1 + W_2 + \dots + W_n := \left\{\sum_{i=1}^n\bm{x}_i \relmiddle| \bm{x}_i \in W_i\right\} \subseteq V$ は $V$ の部分空間．
+        $V$: ベクトル空間，$W_1, W_2, \dots, W_n \subseteq V$: $V$ の部分空間．このとき，$$\sum_{i=1}^n W_i = W_1 + W_2 + \dots + W_n := \left\{\sum_{i=1}^n\bm{x}_i \relmiddle| \bm{x}_i \in W_i\right\} \subseteq V$$ は $V$ の部分空間．
       \end{prop}
       \begin{proof}
         $\bm{0} \in W_i \, (i \in \{1,2,\dots,n\})$ より，$\sum_{i=1}^n\bm{0} \in \sum_{i=1}^n W_i$ なので $\sum_{i=1}^n W_i \neq \emptyset$．
 
-        $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in \sum_{i=1}^n W_i$ とおくと，$\exists \bm{x}_{i,j} \in W_j s.t. \bm{x}_i=\sum_{j=1}^n\bm{x}_{i,j} \, (i \in \{1,2\}, j \in \{1,2,\dots,n\})$．このとき，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2=\sum_{j=1}^n(\lambda_1\bm{x}_{1,j}+\lambda_2\bm{x}_{2,j})$ であり，$\lambda_1\bm{x}_{1,j}+\lambda_2\bm{x}_{2,j} \in W_j$ なので $\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in \sum_{i=1}^n W_i$．
+        $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in \sum_{i=1}^n W_i$ とおくと，$\exists \bm{x}_i^{(j)} \in W_j \, s.t.\, \bm{x}_j=\sum_{i=1}^n\bm{x}_i^{(j)} \, (i \in \{1,2,\dots,n\}, j \in \{1,2\})$．このとき，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2=\sum_{i=1}^n(\lambda_1\bm{x}_i^{(1)}+\lambda_2\bm{x}_i^{(2)})$ であり，$\lambda_1\bm{x}_i^{(1)}+\lambda_2\bm{x}_i^{(2)} \in W_j$ なので $\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in \sum_{i=1}^n W_i$．
       \end{proof}
+      \begin{prop}
+        $V$: ベクトル空間，$W_1, W_2, \dots, W_n \subseteq V$: $V$ の部分空間．このとき，$W_i \in \sum_{j=1}^nW_i \, (i \in \{1,2,\dots,n\})$．
+      \end{prop}
+      \begin{prop}\label{property-sum-of-subspaces}
+        $V$: ベクトル空間，$W_1, W_2 \subseteq V$: $V$ の部分空間．このとき，以下が成り立つ．
+        \begin{enumerate}
+          \item $W_1 + W_2 = W_1 \equiv W_2 \subseteq W_1$
+          \item $W_1 + W_2 = W_2 \equiv W_1 \subseteq W_2$
+        \end{enumerate}
+      \end{prop}
+      \begin{dfn}
+        $V$: ベクトル空間，$W_1, W_2, \dots, W_n \subseteq V$: 部分空間，$\sum_{i=1}^NW_i = V$．任意の $\bm{x} \in V$ に対し $\sum_{i=1}^N\bm{x}_i=\bm{x}$ となる $(\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n) \in W_1 \times W_2 \times \dots \times W_n$ が一意に存在するとき，$V$ は $W_1, W_2, \dots, W_n$ の\textbf{直和}てあるといい，$V=\bigoplus_{i=1}^nW_i=W_1 \oplus W_2 \oplus \dots \oplus W_n$ と書く．
+      \end{dfn}
+      \begin{prop}
+        $V$: $K$ 上のベクトル空間，$W_1, W_2 \subseteq V$: 部分空間，$W_1 + W_2 = V$．このとき，以下は同値．
+        \begin{enumerate}
+          \item $V = W_1 \oplus W_2$．
+          \item $W_1 \cap W_2 = \{\bm{0}\}$．
+        \end{enumerate}
+      \end{prop}
     \subsection{線形写像}
       \begin{dfn}
-        $V_1$, $V_2$: $K$ 上のベクトル空間．写像 $T \colon V_1 \to V_2$ が以下の条件を満たすとき，$T$ は線形写像であるという．
+        $V_1$, $V_2$: $K$ 上のベクトル空間．写像 $T \colon V_1 \to V_2$ が以下の条件を満たすとき，$T$ は\textbf{線形写像}であるという．
         \begin{enumerate}
           \item $T(\bm{x}_1+\bm{x}_2)=T(\bm{x}_1)+T(\bm{x}_2) \, (\bm{x}_1,\bm{x}_2 \in V_1)$．
           \item $T(\lambda\bm{x})=\lambda T(\bm{x}) \, (\lambda \in K, \bm{x} \in V_1)$．
@@ -213,7 +234,12 @@
       \begin{proof}
         \mbox{}
         \begin{enumerate}
-          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，$0(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)=\bm{0}=\lambda_1\bm{0}+\lambda_2\bm{0}=\lambda_10(\bm{x}_1)+\lambda_20(\bm{x}_2)$．
+          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，
+            \begin{align*}
+              0(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) &= \bm{0} \\
+              &= \lambda_1\bm{0}+\lambda_2\bm{0} \\
+              &= \lambda_10(\bm{x}_1)+\lambda_20(\bm{x}_2)．
+            \end{align*}
           \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in V_1$ に対し，
             \begin{align*}
               (-T)(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) &= -(T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)) \\
@@ -373,7 +399,7 @@
       \begin{prop}
         以下が成り立つ．
         \begin{enumerate}
-          \item $V_1,V_2,V_3$: $K$ 上のベクトル空間，$f \in \mathcal{L}(V_1,V_2)$，$g \in \mathcal{L}(V_2,V_3)$，$\lambda \in K$．このとき，$g(kf)=(kg)f=k(gf)$．
+          \item $V_1,V_2,V_3$: $K$ 上のベクトル空間，$f \in \mathcal{L}(V_1,V_2)$，$g \in \mathcal{L}(V_2,V_3)$，$\lambda \in K$．このとき，$g(\lambda f)=(\lambda g)f=\lambda(gf)$．
           \item $V_1,V_2,V_3$: ベクトル空間，$f \in \mathcal{L}(V_1,V_2)$，$g_1, g_2 \in \mathcal{L}(V_2,V_3)$．このとき，$(g_1+g_2)f=g_1f+g_2f$．
           \item $V_1,V_2,V_3$: ベクトル空間，$f_1,f_2 \in \mathcal{L}(V_1,V_2)$，$g \in \mathcal{L}(V_2,V_3)$．このとき，$g(f_1+f_2)=gf_1+gf_2$．
           \item $V_1,V_2,V_3,V_4$: ベクトル空間，$f_1 \in \mathcal{L}(V_1,V_2), f_2 \in \mathcal{L}(V_2,V_3), f_3 \in \mathcal{L}(V_3,V_4)$．このとき，$(f_3f_2)f_1=f_3(f_2f_1)$．
@@ -384,15 +410,15 @@
         \begin{enumerate}
           \item $\bm{x} \in V_1$ に対し，
             \begin{align*}
-              (g(kf))(\bm{x}) &= g((kf)(\bm{x}) \\
-              &= g(k(f(\bm{x}))) \\
-              &= k(g(f(\bm{x}))) \\
-              &= k((gf)(\bm{x}))，\\
-              (kg)(f)(\bm{x}) &= (kg)(f(\bm{x})) \\
-              &= k(g(f(\bm{x}))) \\
-              &= k((gf)(\bm{x}))
+              (g(\lambda f))(\bm{x}) &= g((\lambda f)(\bm{x})) \\
+              &= g(\lambda(f(\bm{x}))) \\
+              &= \lambda(g(f(\bm{x}))) \\
+              &= \lambda((gf)(\bm{x}))，\\
+              (\lambda g)(f)(\bm{x}) &= (\lambda g)(f(\bm{x})) \\
+              &= \lambda(g(f(\bm{x}))) \\
+              &= \lambda((gf)(\bm{x}))
             \end{align*}
-            よって $g(kf)=(kg)f=k(gf)$．
+            よって $g(\lambda f)=(\lambda g)f=\lambda(gf)$．
           \item $\bm{x} \in V_1$ に対し，
             \begin{align*}
               ((g_1+g_2)f)(\bm{x}) &= (g_1+g_2)(f(\bm{x})) \\
@@ -414,12 +440,200 @@
             \begin{align*}
                ((f_3f_2)f_1)(\bm{x}) &= (f_3f_2)(f_1(x)) \\
                &= f_3(f_2(f_1(\bm{x}))) \\
-               &= f_3((f_2f_1)(\bm{x}) \\
+               &= f_3((f_2f_1)(\bm{x})) \\
                &= (f_3(f_2f_1))(\bm{x})
             \end{align*}
             よって $(f_3f_2)f_1=f_3(f_2f_1)$．
         \end{enumerate}
       \end{proof}
+    \subsection{基底と次元}
+      \begin{dfn}
+        $V$: $K$ 上のベクトル空間，$A=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$: $V$ のベクトルの多重集合．$\left\{\sum_{i=1}^n c_i\bm{x}_i \relmiddle| c_i \in K \right\} \subseteq V$ を $A$ の\textbf{線形包}といい，$\Span A$ と表す．
+      \end{dfn}
+      \begin{dfn}
+        $V$: $K$ 上のベクトル空間，$A=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$: $V$ のベクトルの多重集合．$\Span A = V$ のとき，$A$ は $V$ を\textbf{張る}という．
+      \end{dfn}
+      \begin{prop}
+        $V$: $K$ 上のベクトル空間，$A$: $V$ のベクトルの多重集合．$\Span A \subseteq V$ は $V$ の部分空間である．
+      \end{prop}
+      \begin{proof}
+        $A=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$ とする．
+        
+        $c_i = 0 \, (i \in \{1, 2, \dots, n\})$ とすると $\sum_{i=1}^n c_i\bm{x}_i = \bm{0}$ より，$\bm{0} \in \Span A$ であるから $\Span A \neq \emptyset$ である．
+
+        また，$\lambda_1, \lambda_2 \in K, \bm{y}_j=\sum_{i=1}^n c_i^{(j)}\bm{x}_i \in \Span A \, (j \in \{1,2\}, c_i^{(j)} \in K)$ とおくと，
+
+        \begin{align*}
+          \lambda_1\bm{y}_1+\lambda_2\bm{y}_2 &= \lambda_1 \sum_{i=1}^n c_i^{(1)}\bm{x}_i+\lambda_2 \sum_{i=1}^n c_i^{(2)}\bm{x}_i \\
+          &= \sum_{i=1}^n \lambda_1c_i^{(1)}\bm{x}_i + \sum_{i=1}^n \lambda_2c_i^{(2)}\bm{x}_i \\
+          &= \sum_{i=1}^n\left(\lambda_1c_i^{(1)}\bm{x}_i+\lambda_2c_i^{(2)}\bm{x}_i\right) \\
+          &= \sum_{i=1}^n\left(\lambda_1c_i^{(1)}+\lambda_2c_i^{(2)}\right)\bm{x}_i
+        \end{align*}
+
+        $\lambda_1c_i^{(1)}+\lambda_2c_i^{(2)} \in K$ であるから，$\lambda_1\bm{y}_1+\lambda_2\bm{y}_2 \in \Span A$ である．
+      \end{proof}
+      \begin{prop}\label{property-span-and-subspace}
+        $V$: $K$ 上のベクトル空間，$W \subseteq V$: 部分空間，$\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n \in V$．このとき，以下は同値．
+        \begin{enumerate}
+          \item $\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\} \subseteq W$．
+          \item $\Span \{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\} \subseteq W$．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{description}
+          \item [$(1. \implies 2.) \, $]
+            \mbox{}
+
+            $\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\} \subseteq W$ より，$\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n \in W$ である．
+
+            $\bm{x} \in \{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$ をとると，$\exists (c_1,c_2,\dots,c_n) \in K^n \, s.t. \, s=\sum_{i=1}^nc_i\bm{x}_i$ であるから，$\bm{x} \in W$．よって $\Span \{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\} \subseteq W$．
+          \item [$(2. \implies 1.) \, $]
+            \mbox{}
+
+            $\bm{x}_i=\sum_{j=1}^n\delta_{ij}\bm{x}_j$ であるから，$\bm{x}_i \in \Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\} \, (i \in \{1,2,\dots,n\})$．よって，$\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\} \subseteq W$．
+        \end{description}
+      \end{proof}
+      \begin{prop}\label{span-of-sum-space}
+        $V$: $K$ 上のベクトル空間，$A_1, A_2$: $V$ のベクトルの多重集合．このとき，$\Span (A_1 \sqcup A_2) = \Span A_1 + \Span A_2$．
+      \end{prop}
+      \begin{proof}
+        $A_i=\{\{\bm{x}^{(i)}_1, \bm{x}^{(i)}_2, \dots, \bm{x}^{(i)}_{n_i}\}\} \, (i \in \{1,2\})$ とおく．$$A_1 \sqcup A_2 = \{\{\bm{x}^{(1)}_1, \bm{x}^{(1)}_2, \dots, \bm{x}^{(1)}_{n_1}, \bm{x}^{(2)}_1, \bm{x}^{(2)}_2, \dots, \bm{x}^{(2)}_{n_2}\}\}$$ である．
+
+        $\bm{x} \in \Span(A_1 \sqcup A_2)$ をとると，$\bm{x}=\sum_{j=1}^{n_1}c_j^{(1)}\bm{x}^{(1)}_j+\sum_{j=1}^{n_2}c_j^{(2)}\bm{x}^{(2)}_j$ とできる．$\bm{x}^{(i)} = \sum_{j=1}^{n_i}c_j^{(i)}\bm{x}^{(i)}_j \in \Span A_i \, (i\in\{1,2\})$ とおくと，$\bm{x}=\bm{x}^{(1)}+\bm{x}^{(2)}$ より，$\bm{x} \in \Span A_1 + \Span A_2$ である．
+
+        また，$\bm{x} \in \Span A_1 + \Span A_2$ をとると，$\bm{x}=\bm{x}^{(1)}+\bm{x}^{(2)} \, (\bm{x}^{(i)} \in \Span A_i \, (i \in \{1,2\}))$ とできる．さらに，$\bm{x}^{(i)} = \sum_{j=1}^{n_i}c_j^{(i)}\bm{x}^{(i)}_j \, (i \in \{1,2\})$ とできる．このとき，$\bm{x}=\sum_{j=1}^{n_1}c_j^{(1)}\bm{x}^{(1)}_j+\sum_{j=1}^{n_2}c_j^{(2)}\bm{x}^{(2)}_j$ となるので，$\bm{x} \in \Span(A_1 \sqcup A_2)$．
+      \end{proof}
+      \begin{cor}
+        $V$: $K$ 上のベクトル空間，$A, B$: $V$ のベクトルの多重集合，$A \subseteq B$．このとき，$\Span A \subseteq \Span B$ が成り立つ．
+      \end{cor}
+      \begin{proof}
+        $A \subseteq B$ より，$V$ のベクトルの多重集合 $A'$ が存在して $B = A \sqcup A'$ とできる．このとき，命題 \ref{span-of-sum-space} より $\Span A \subseteq \Span A + \Span A' = \Span (A \sqcup A') = \Span B$．
+      \end{proof}
+      \begin{cor}
+        $V$: $K$ 上のベクトル空間，$A, B$: $V$ のベクトルの多重集合，$A \subseteq B$．このとき，$A$ が $V$ を張るならば，$B$ も $V$ を張る．
+      \end{cor}
+      \begin{proof}
+        $A$ は $V$ を張るので，$\Span A = V$ であるから $V = \Span A \subseteq \Span B$．また，$\Span B$ は $V$ の部分空間なので $\Span B \subseteq V$．従って $\Span B = V$ なので $B$ は $V$ を張る．
+      \end{proof}
+      \begin{dfn}
+        $V$: $K$ 上のベクトル空間，$A=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$: $V$ のベクトルの多重集合．
+        \begin{enumerate}
+          \item $(c_1,\dots,c_n) \in K^n$ に対し $\sum_{i=1}^n c_i\bm{x}_i = c_1\bm{x}_1 + c_2\bm{x}_2 + \dots + c_n\bm{x}_n = \bm{0} \implies c_1 = \dots = c_n = 0$ が成り立つとき，$A$ は\textbf{一次独立}であるという．
+          \item $A$ が一次独立でないとき，$A$ は\textbf{一次従属}であるという．
+        \end{enumerate}
+      \end{dfn}
+      \begin{prop}
+        $V$: $K$ 上のベクトル空間，$A, B$: $V$ のベクトルの多重集合，$A \subseteq B$．このとき，以下が成り立つ．
+        \begin{enumerate}
+          \item $A$ が一次従属ならば，$B$ も一次従属である．
+          \item $B$ が一次独立ならば，$A$ も一次独立である．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{enumerate}
+          \item $A=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}, B=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n, \bm{x}'_1, \bm{x}'_2, \dots, \bm{x}'_m\}\}$ とおく．$A$ が一次従属のとき，$(c_1,c_2,\dots,c_n) \neq (0,0,\dots,0) \in K^n$ が存在して，$\sum_{i=1}^nc_i\bm{x}_i = \bm{0}$ である．
+          
+          このとき，$c'_1=c'_2=\dots=c'_m=0$ とおくと，$(c_1,c_2,\dots,c_n,c'_1,c'_2,\dots,c'_m) \neq (0,0,\dots,0) \in K^{n+m}$，$\sum_{i=1}^nc_i\bm{x}_i+\sum_{i=1}^mc'_i\bm{x}'_i=\bm{0}$ であるから，$B$ は一次従属である．
+          \item 1. の対偶をとる．
+        \end{enumerate}
+      \end{proof}
+      \begin{lem}\label{linearly-independent-vectors-are-nonzero}
+        $V$: $K$ 上のベクトル空間，$A=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$: $V$ の一次独立なベクトル．このとき，$\bm{x}_i \neq \bm{0} \ (i \in \{1,2,\dots,n\})$．
+      \end{lem}
+      \begin{proof}
+        ある $i \in \{1,2,\dots,n\}$ について $\bm{x}_i = \bm{0}$ であると仮定する．$c_j = \delta_{ij} \ (j \in \{1,2,\dots,n\})$ とおくと，$\sum_{j=1}^nc_j\bm{x}_j=c_i\bm{x}_i=\bm{0}$ だが，$(c_1,c_2,\dots,c_n) \neq (0,0,\dots,0)$ なので，$\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$ が一次独立であることに矛盾する．よって $\bm{x}_i \neq \bm{0} \ (i \in \{1,2,\dots,n\})$ である．
+      \end{proof}
+      \begin{lem}\label{exchange-lemma}
+        $V$: $K$ 上のベクトル空間，$A=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$: $V$ の一次独立なベクトル，$B=\{\{\bm{y}_1, \bm{y}_2, \dots, \bm{y}_m\}\}$: $V$ を張るベクトル．このとき，ある $1 \leq i \leq m$ が存在して，$\{\{\bm{x}_1, \bm{y}_1, \bm{y}_2, \dots, \bm{y}_{i-1}, \bm{y}_{i+1}, \dots, \bm{y}_m\}\}$ は $V$ を張る．
+      \end{lem}
+      \begin{proof}
+        $B$ は $V$ を張るので，$\exists (c_1, c_2, \dots, c_m) \in K^m \, s.t. \, \bm{x}_1=\sum_{i=1}^m c_i\bm{y}_i$．ここで，$c_1=c_2=\dots=c_m=0$ と仮定すると，$\bm{x}_1=\bm{0}$ となり，補題 \ref{linearly-independent-vectors-are-nonzero} に矛盾する．よって，$c_i \neq 0$ となる $i$ が存在する．このとき，$\bm{y}_i=\frac{1}{c_i}\bm{x}_1-\sum_{j \in \{1,2,\dots,m\} \setminus \{i\}}\frac{c_j}{c_i}\bm{y}_j$ が成り立つ．
+
+        $B$ は $V$ を張るので，任意の $\bm{x} \in V$ に対し，$\exists (c'_1, c'_2, \dots, c'_m) \in K^m \, s.t. \, \bm{x}=\sum_{j=1}^mc'_j\bm{y}_j$．よって，
+
+        \begin{align*}
+          \bm{x} &= \sum_{j=1}^mc'_j\bm{y}_j \\
+          &= \sum_{j \in \{1,2,\dots,m\} \setminus \{i\}} c'_j\bm{y}_j + c'_i\bm{y}_i \\
+          &= \sum_{j \in \{1,2,\dots,m\} \setminus \{i\}} c'_j\bm{y}_j + c'_i\left(\frac{1}{c_i}\bm{x}_1-\sum_{j \in \{1,2,\dots,m\} \setminus \{i\}}\frac{c_j}{c_i}\bm{y}_j\right) \\
+          &= \sum_{j \in \{1,2,\dots,m\} \setminus \{i\}}c'_j\bm{y}_j - c'_i\sum_{j \in \{1,2,\dots,m\} \setminus \{i\}}\frac{c_j}{c_i}\bm{y}_j + \frac{c'_i}{c_i}\bm{x}_1\\
+          &= \sum_{j \in \{1,2,\dots,m\} \setminus \{i\}}\left(c'_j-c'_i\frac{c_j}{c_i}\right)\bm{y}_j+\frac{c'_i}{c_i}\bm{x}_1
+        \end{align*}
+
+        なので，多重集合 $\{\{\bm{x}_1, \bm{y}_1, \bm{y}_2, \dots, \bm{y}_{i-1}, \bm{y}_{i+1}, \dots, \bm{y}_m\}\}$ は $V$ を張る．
+      \end{proof}
+      \begin{thm}\label{spanning-list-is-longer-than-independent-list}
+        $V$: $K$ 上のベクトル空間，$\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$: $V$ を張るベクトル，$\{\{\bm{y}_1, \bm{y}_2, \dots, \bm{y}_m\}\}$: $V$ の一次独立なベクトル．このとき，$n \geq m$．
+      \end{thm}
+      \begin{dfn}
+        $V$: 上のベクトル空間，$A$: $V$ のベクトルの多重集合．$A$ が以下の条件を満たすとき，$A$ は $V$ の\textbf{基底}であるという．
+        \begin{enumerate}
+          \item $A$ は一次独立である．
+          \item $A$ は $V$ を張る．
+        \end{enumerate}
+      \end{dfn}
+      \begin{thm}\label{well-definedness-of-dimension}
+        $V$: $K$ 上のベクトル空間，$A=\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}, B=\{\{\bm{y}_1, \bm{y}_2, \dots, \bm{y}_m\}\}$: $V$ の基底．このとき，$n = m$．  
+      \end{thm}
+      \begin{proof}
+        $A$ は $V$ を張り，$B$ は一次独立であるから，定理 \ref{spanning-list-is-longer-than-independent-list} より $n \geq m$．同様に，$B$ は $V$ を張り，$A$ は一次独立であるから，定理 \ref{spanning-list-is-longer-than-independent-list} より $m \geq n$．ゆえに $n = m$．
+      \end{proof}
+      \begin{dfn}
+        $V$: ベクトル空間．$V$ に基底が存在するとき，定理 \ref{well-definedness-of-dimension} より，$V$ の基底に含まれるベクトルの個数は基底によらない．この個数を $V$ の\textbf{次元}といい，$\dim V$ と書く．
+      \end{dfn}
+      \begin{dfn}
+        $V$: ベクトル空間．$V$ に基底が存在するとき，$V$ は有限次元であるという．そうでないとき，$V$ は無限次元であるという．
+      \end{dfn}
+      \begin{prop}
+        $V$: ベクトル空間．このとき，以下は同値．
+        \begin{enumerate}
+          \item $V$ は有限次元である．
+          \item $V$ のベクトルの多重集合で $V$ を張るものが存在する．
+        \end{enumerate}
+      \end{prop}
+      \begin{proof}
+        \mbox{}
+        \begin{description}
+          \item [$(1. \implies 2.) \, $]
+            \mbox{}
+            
+            $V$ は有限次元であるから，$V$ のベクトルの多重集合 $\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$ で $V$ の基底であるものが存在する．このとき，$\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$ は $V$ を張る．
+          \item [$(2. \implies 1.) \, $]
+            \mbox{}
+
+            $\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_n\}\}$ を $V$ のベクトルの多重集合で $V$ を張るものとする．$V$ のベクトルの多重集合 $S_0, S_1, \dots, S_n$ を以下のように定める．
+
+            \begin{itemize}
+              \item $S_0 = \emptyset$ とする．
+              \item $i=1,2,\dots,n$ に対し，$\bm{x}_i \in \Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_{i-1}\}\}$ ならば $S_{i+i} = S_i$ とし，そうでないなら $S_{i+1}$ は $S_i$ に $\bm{x}_i$ を加えたものとする．
+            \end{itemize}
+
+            $S_i$ は $\Span \{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_i\}\}$ の基底であることを $i$ に関する帰納法により示す．
+            
+            \begin{itemize}
+              \item $i=0$ のときは自明である．
+              \item $S_i$ は $\Span \{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_i\}\}$ の基底であると仮定する．
+              \begin{itemize}
+                \item $\bm{x}_{i+1} \in \Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_i\}\}$ のとき，命題 \ref{property-span-and-subspace} より $\Span \{\{\bm{x}_{i+1}\}\} \subseteq \Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_i\}\}$ なので，命題 \ref{span-of-sum-space}, \ref{property-sum-of-subspaces} より $\Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_i, \bm{x}_{i+1}\}\} = \Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_i\}\}+\Span\{\{\bm{x}_{i+1}\}\}=\Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_i\}\}$．また，$S_{i+1}=S_i$ であるから，$S_{i+1}$ は $\Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_{i+1}\}\}$ の基底である．
+                \item $\bm{x}_{i+1} \notin \Span\{\{\bm{x}_1, \bm{x}_2, \dots, \bm{x}_i\}\}$ のとき，TODO
+              \end{itemize}
+            \end{itemize}
+        \end{description}
+      \end{proof}
+      \begin{prop}
+        $V$: 有限次元ベクトル空間，$W \subseteq V$: $V$ の部分空間．このとき，以下が成り立つ．
+        \begin{enumerate}
+          \item $W$ は有限次元ベクトル空間である．
+          \item $\dim W \leq \dim V$．
+          \item $\dim W = 0 \iff W = \{\bm{0}\}$．
+          \item $\dim W = \dim V \iff W = V$．
+        \end{enumerate}
+      \end{prop}
+      \begin{prop}
+        $V$: 有限次元ベクトル空間，$W_1, W_2 \subseteq V$: 部分空間．このとき，$\dim(W_1 + W_2) = \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2)$．
+      \end{prop}
+    \subsection{線形写像の表現}
       \begin{prop}\label{image-and-preimage-of-subspace-is-subspace}
         $V_1, V_2$: $K$ 上のベクトル空間，$T \in \mathcal{L}(V_1,V_2)$．このとき，以下が成り立つ．
         \begin{enumerate}
@@ -430,15 +644,15 @@
       \begin{proof}
         \mbox{}
         \begin{enumerate}
-          \item $\lambda_1,\lambda_2 \in K, \bm{y}_1,\bm{y}_2 \in T(W)$ とおくと，$\exists \bm{x}_1,\bm{x}_2 \in W: T(\bm{x}_1)=\bm{y}_1,T(\bm{x}_2)=\bm{y}_2$．このとき，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in W$ より $\lambda_1\bm{y}_1+\lambda_2\bm{x}_2=\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2)=T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) \in T(W)$．
-          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in T^{-1}(W)$ とおくと，$T(\bm{x}_1),T(\bm{x}_2) \in W$ より $T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)=\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2) \in W$ であるから，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in W$．
+          \item $\lambda_1,\lambda_2 \in K, \bm{y}_1,\bm{y}_2 \in T(W)$ とおくと，$\exists \bm{x}_1,\bm{x}_2 \in W: T(\bm{x}_1)=\bm{y}_1,T(\bm{x}_2)=\bm{y}_2$．このとき，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in W$ より $\lambda_1\bm{y}_1+\lambda_2\bm{y}_2=\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2)=T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2) \in T(W)$．
+          \item $\lambda_1,\lambda_2 \in K, \bm{x}_1,\bm{x}_2 \in T^{-1}(W)$ とおくと，$T(\bm{x}_1),T(\bm{x}_2) \in W$ より $T(\lambda_1\bm{x}_1+\lambda_2\bm{x}_2)=\lambda_1T(\bm{x}_1)+\lambda_2T(\bm{x}_2) \in W$ であるから，$\lambda_1\bm{x}_1+\lambda_2\bm{x}_2 \in T^{-1}(W)$．
         \end{enumerate}
-      \end{proof}　　
+      \end{proof}
       \begin{dfn}
         $V_1, V_2$: ベクトル空間，$T \in \mathcal{L}(V_1,V_2)$．
         \begin{enumerate}
-          \item $\Ker T := \{\bm{x} \in V_1 \mid T(\bm{x})=\bm{0}\} = T^{-1}(\{\bm{0}\})$ を $T$ の核という．
-          \item $\Img T := \{T(\bm{x}) \mid \bm{x} \in V_1\} = T(V_1)$ を $T$ の像という．
+          \item $\Ker T := \{\bm{x} \in V_1 \mid T(\bm{x})=\bm{0}\} = T^{-1}(\{\bm{0}\})$ を $T$ の\textbf{核}という．
+          \item $\Img T := \{T(\bm{x}) \mid \bm{x} \in V_1\} = T(V_1)$ を $T$ の\textbf{像}という．
         \end{enumerate}
       \end{dfn}
       \begin{cor}
@@ -451,4 +665,6 @@
       \begin{proof}
         命題 \ref{image-and-preimage-of-subspace-is-subspace} から従う．
       \end{proof}
+    \subsection{次元定理}
+      
 \end{document}
